@@ -14,3 +14,4 @@ A installer sur votre ordinateur si ce n'est pas déjà fait :
 - PostgreSQL 12.4
 - Intellij ou Eclipse IDE for Enterprise Java Developers
 - Un éditeur pour intéragir avec Postgres. Pour ma part, j'utilise pgAdmin 4 (qui, je crois doit se télécharger automatiquement en même temps que la base sous Windows. Mais à vérifier)
+- Postman pour pouvoir tester les routes
