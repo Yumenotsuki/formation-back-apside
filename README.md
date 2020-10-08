@@ -7,7 +7,7 @@ Ce projet utilise :
 - Spring boot 2.3.4
 - PostgreSQL 12.4
 
-# A installer sur votre ordinateur si ce n'est pas déjà fait :
+A installer sur votre ordinateur si ce n'est pas déjà fait :
 
 - Java 11
 - Maven 3.6.3
@@ -16,7 +16,7 @@ Ce projet utilise :
 - Un éditeur pour intéragir avec Postgres. Pour ma part, j'utilise pgAdmin 4 (qui, je crois doit se télécharger automatiquement en même temps que la base sous Windows. Mais à vérifier)
 - Postman pour pouvoir tester les routes
 
-# Authentification :
+Authentification :
 
 - Pour inscrire un nouvel utilisateur :
 
@@ -50,7 +50,7 @@ Réponse reçu si la requête à réussi :
     "jwt": "user jwt"
 }
 
-# Pour tester que l'API fonctionne bien  :
+Pour tester que l'API fonctionne bien  :
 
 - GET localhost:8080/test/home
 route accessible à tous 
@@ -66,7 +66,7 @@ Welcome user
 
 Si vous ne vous êtes pas identifié, l'API vous retourne une erreur forbidden, access denied.
 
-# tutoriels utilisés pour réaliser ce projet (en anglais) :
+tutoriels utilisés pour réaliser ce projet (en anglais) :
 
 - Spring security et JWT : https://www.youtube.com/watch?v=X80nJ5T7YpE&list=PLqq-6Pq4lTTYTEooakHchTGglSvkZAjnE&index=12
 - Spring security avec authentification JPA : https://www.youtube.com/watch?v=TNt3GHuayXs&list=PLqq-6Pq4lTTYTEooakHchTGglSvkZAjnE&index=8
