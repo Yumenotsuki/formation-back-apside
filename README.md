@@ -16,6 +16,15 @@ A installer sur votre ordinateur si ce n'est pas déjà fait :
 - Un éditeur pour intéragir avec Postgres. Pour ma part, j'utilise pgAdmin 4 (qui, je crois doit se télécharger automatiquement en même temps que la base sous Windows. Mais à vérifier)
 - Postman pour pouvoir tester les routes
 
+Pour faire fonctionner le back :
+
+- Télécharger le projet
+- Créer une base de donnée PostgreSQL
+- Allez dans le fichier application.properties du projet :
+    - spring.datasource.url contient le lien vers le jdbc postgresql (le module permettant la liaison avec la base de données) et l'url où se trouve votre base de données. Remplacer "localhost:5432" par le localhost de votre base de données et "formation2" par le nom de votre base de données
+    - spring.datasource.username contient votre identifiant pour vous connecter à votre base de données. Remplacer "postgres" par votre propre identifiant
+    - spring.datasource.password contient votre mot de passe pour accéder à votre base de données. Remplacer les étoiles par votre propre mot de passe (quand vous push sur Git ou autre, pensez bien à l'effacer)
+
 Authentification :
 
 - Pour inscrire un nouvel utilisateur :
