@@ -39,7 +39,6 @@ public class AuthController {
 	@Autowired
 	PasswordEncoder encoder;
 	
-	//créer token correspondant à user
 	@PostMapping("/signin")
 	public ResponseEntity<?> login(@RequestBody AuthenticationRequest authenticationRequest) throws Exception {
 		try {
@@ -52,11 +51,10 @@ public class AuthController {
 		
 		final String jwt = jwtUtils.generateToken(userDetails);
 		
-		return ResponseEntity.ok(new AuthenticationResponse(jwt));
+		return ResponseEntity.ok(new AuthenticationResponse(jwt, "Login is successful."));
 		
 	}
 	
-	//bug quand on veut enregistrer user alors que user déjà présent dans base ?
 	@PostMapping("/signup")
 	public ResponseEntity<?> registerUser(@RequestBody SignUpRequest signup) throws Exception {
 		
