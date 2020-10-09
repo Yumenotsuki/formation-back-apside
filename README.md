@@ -26,7 +26,7 @@ Body à renseigner pour créer un utilisateur
 
 {
 "username": "your username",
-"password" "your password"
+"password" "your password",
 "email": "your email"
 }
 
@@ -47,7 +47,8 @@ Body à renseigner pour se connecter :
 Réponse reçu si la requête à réussi :
 
 {
-    "jwt": "user jwt"
+    "jwt": "user jwt",
+    "message": "Login is successful."
 }
 
 Pour tester que l'API fonctionne bien  :
