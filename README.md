@@ -53,12 +53,23 @@ Body à renseigner pour se connecter :
 "password": "your password"
 }
 
-Réponse reçu si la requête à réussi :
+Réponse reçue si la requête à réussi :
 
 {
     "jwt": "user jwt",
     "message": "Login is successful."
 }
+
+GET localhost:8080/api/profile?username=your username
+
+Réponse attendue
+
+{
+"username": "your username",
+"email": "your email"
+}
+
+S'il y a une erreur (hors authentification), le message "This user profile does not exist" s'affiche
 
 Pour tester que l'API fonctionne bien  :
 
