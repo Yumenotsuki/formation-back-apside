@@ -35,7 +35,8 @@ Body à renseigner pour créer un utilisateur
 
 {
 "username": "your email",
-"password" "your password"
+"password" "your password",
+"email": "your email"
 }
 
 Réponse reçue si la création est un succès : 
