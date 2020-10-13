@@ -34,7 +34,7 @@ POST localhost:8080/auth/signup
 Body à renseigner pour créer un utilisateur
 
 {
-"username": "your email",
+"username": "your username",
 "password" "your password",
 "email": "your email"
 }
@@ -49,7 +49,7 @@ POST localhost:8080/auth/signin
 Body à renseigner pour se connecter :
 
 {
-"username": "your email",
+"username": "your username",
 "password": "your password"
 }
 
