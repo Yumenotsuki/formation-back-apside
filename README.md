@@ -60,7 +60,8 @@ Réponse reçue si la requête à réussi :
     "message": "Login is successful."
 }
 
-GET localhost:8080/api/profile?username=your username
+/*Route à revoir
+GET localhost:8080/api/profile
 
 Réponse attendue
 
@@ -69,7 +70,7 @@ Réponse attendue
 "email": "your email"
 }
 
-S'il y a une erreur (hors authentification), le message "This user profile does not exist" s'affiche
+S'il y a une erreur (hors authentification), le message "This user profile does not exist" s'affiche*/
 
 Pour tester que l'API fonctionne bien  :
 
