@@ -94,7 +94,6 @@ with dofus_monsters (doc) as (values(
 		"imgUrl": "https://s.ankama.com/www/static.ankama.com/dofus/www/game/monsters/200/53.png",
 		"url": "https://www.dofus.com/fr/mmorpg/encyclopedie/monstres/53-bwork-mage"
 	},
-	
 	{
 		"_id": 54,
 		"name": "Chafer",
