@@ -269,6 +269,13 @@ Ressource supplémentaire (en anglais):
 
 - Tutoriel Spring security avec authentification JWT: https://bezkoder.com/spring-boot-jwt-authentication/
 
+Liens vers les API utilisées :
+
+- https://docs.pokemontcg.io/
+- https://dofapi.fr/
+
+
+
 
 
 
