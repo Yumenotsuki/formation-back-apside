@@ -10,7 +10,7 @@ public class Profile {
 		this.username = username;
 		this.email = email;
 	}
-	
+
 	public String getUsername() {
 		return username;
 	}
@@ -23,6 +23,7 @@ public class Profile {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	
 	
 	
 
