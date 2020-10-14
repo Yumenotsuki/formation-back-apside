@@ -11,7 +11,7 @@ public class Pokemon {
 	@Id
 	private String id;
 	private String name;
-	@Column(name = "imgurl")
+	@Column(name = "imageurl")
 	private String imageUrl;
 	
 	public String getId() {
