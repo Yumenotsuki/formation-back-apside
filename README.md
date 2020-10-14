@@ -60,7 +60,178 @@ Réponse reçue si la requête à réussi :
     "message": "Login is successful."
 }
 
-/*Route à revoir
+GET localhost:8080/api/dofus
+Récupère des données provenant de l'api Dofus, route monsters
+NB: le champs imgUrl est vide pour l'instant car je n'ai pas réussi à trouver comment importer les images qui ne sont pas des urls. Je ferai un fix quand j'aurais trouvé
+
+Réponse attendue si la requête réussie
+
+[
+    {
+        "id": 31,
+        "name": "Larve Bleue",
+        "type": "Larves",
+        "imgUrl": null,
+        "url": "https://www.dofus.com/fr/mmorpg/encyclopedie/monstres/31-larve-bleue"
+    },
+    {
+        "id": 34,
+        "name": "Larve Verte",
+        "type": "Larves",
+        "imgUrl": null,
+        "url": "https://www.dofus.com/fr/mmorpg/encyclopedie/monstres/34-larve-verte"
+    },
+    {
+        "id": 46,
+        "name": "Larve Orange",
+        "type": "Larves",
+        "imgUrl": null,
+        "url": "https://www.dofus.com/fr/mmorpg/encyclopedie/monstres/46-larve-orange"
+    },
+    {
+        "id": 47,
+        "name": "Abraknyde",
+        "type": "Abraknydiens",
+        "imgUrl": null,
+        "url": "https://www.dofus.com/fr/mmorpg/encyclopedie/monstres/47-abraknyde"
+    },
+    {
+        "id": 48,
+        "name": "Tournesol Sauvage",
+        "type": "Plantes des champs",
+        "imgUrl": null,
+        "url": "https://www.dofus.com/fr/mmorpg/encyclopedie/monstres/48-tournesol-sauvage"
+    },
+    {
+        "id": 52,
+        "name": "Arakne",
+        "type": "Vermines des champs",
+        "imgUrl": null,
+        "url": "https://www.dofus.com/fr/mmorpg/encyclopedie/monstres/52-arakne"
+    },
+    {
+        "id": 53,
+        "name": "Bwork Mage",
+        "type": "Bworks",
+        "imgUrl": null,
+        "url": "https://www.dofus.com/fr/mmorpg/encyclopedie/monstres/53-bwork-mage"
+    },
+    {
+        "id": 54,
+        "name": "Chafer",
+        "type": "Chafers",
+        "imgUrl": null,
+        "url": "https://www.dofus.com/fr/mmorpg/encyclopedie/monstres/54-chafer"
+    },
+    {
+        "id": 55,
+        "name": "Gelée Bleue",
+        "type": "Gelées",
+        "imgUrl": null,
+        "url": "https://www.dofus.com/fr/mmorpg/encyclopedie/monstres/55-gelee-bleue"
+    },
+    {
+        "id": 56,
+        "name": "Gelée Menthe",
+        "type": "Gelées",
+        "imgUrl": null,
+        "url": "https://www.dofus.com/fr/mmorpg/encyclopedie/monstres/56-gelee-menthe"
+    },
+    {
+        "id": 57,
+        "name": "Gelée Fraise",
+        "type": "Gelées",
+        "imgUrl": null,
+        "url": "https://www.dofus.com/fr/mmorpg/encyclopedie/monstres/57-gelee-fraise"
+    },
+    {
+        "id": 58,
+        "name": "Gelée Royale Bleue",
+        "type": "Gelées",
+        "imgUrl": null,
+        "url": "https://www.dofus.com/fr/mmorpg/encyclopedie/monstres/58-gelee-royale-bleue"
+    },
+    {
+        "id": 59,
+        "name": "Champ Champ",
+        "type": "Vermines des champs",
+        "imgUrl": null,
+        "url": "https://www.dofus.com/fr/mmorpg/encyclopedie/monstres/59-champ-champ"
+    },
+    {
+        "id": 61,
+        "name": "Moskito",
+        "type": "Vermines des champs",
+        "imgUrl": null,
+        "url": "https://www.dofus.com/fr/mmorpg/encyclopedie/monstres/61-moskito"
+    }
+]
+
+Si une erreur survient, l'api renvoie le message "Error when fetching Dofus monsters" ou une erreur Forbidden, access denied si l'utilisateur n'est pas connecté
+
+GET localhost:8080/api/pokemon
+Récupère des données provenant de l'api tcg pokemon, route cards
+NB: le champs imageUrl est vide pour l'instant car je n'ai pas réussi à trouver comment importer les images qui ne sont pas des urls. Je ferai un fix quand j'aurais trouvé
+
+Réponse attendue si la requête réussie
+
+[
+    {
+        "id": "xy7-10",
+        "name": "Vespiquen",
+        "imageUrl": null
+    },
+    {
+        "id": "dp6-90",
+        "name": "Cubone",
+        "imageUrl": null
+    },
+    {
+        "id": "pl2-103",
+        "name": "Alakazam 4",
+        "imageUrl": null
+    },
+    {
+        "id": "ex8-100",
+        "name": "Hariyama ex",
+        "imageUrl": null
+    },
+    {
+        "id": "xy7-4",
+        "name": "Bellossom",
+        "imageUrl": null
+    },
+    {
+        "id": "ex16-1",
+        "name": "Aggron",
+        "imageUrl": null
+    },
+    {
+        "id": "xy11-41",
+        "name": "Joltik",
+        "imageUrl": null
+    },
+    {
+        "id": "pl2-104",
+        "name": "Floatzel GL",
+        "imageUrl": null
+    },
+    {
+        "id": "dp6-107",
+        "name": "Misdreavus",
+        "imageUrl": null
+    },
+    {
+        "id": "xy0-14",
+        "name": "Greninja",
+        "imageUrl": null
+    }
+]
+
+Si une erreur survient le message "Error when fetching pokemons" s'affiche ou bien une erreur forbidden, access denied si l'utilisateur n'est pas conencté à son compte.
+
+/*Peut-être route à revoir, à voir*/
+
 GET localhost:8080/api/profile
 
 Réponse attendue
@@ -70,7 +241,8 @@ Réponse attendue
 "email": "your email"
 }
 
-S'il y a une erreur (hors authentification), le message "This user profile does not exist" s'affiche*/
+S'il y a une erreur (hors authentification), le message "This user profile does not exist" s'affiche
+
 
 Pour tester que l'API fonctionne bien  :
 
