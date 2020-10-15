@@ -5,9 +5,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(name = "users")
+@Table(name = "users", uniqueConstraints = {
+		@UniqueConstraint(columnNames = "username"),
+		@UniqueConstraint(columnNames = "email")
+})
 public class User {
 	
 	@Id
@@ -65,17 +69,5 @@ public class User {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
-
-	@Override
-	public String toString() {
-		return "User [id=" + id + ", username=" + username + ", password=" + password + ", email=" + email + ", active="
-				+ active + ", roles=" + roles + "]";
-	}
-	
-	
-	
-	
-	
 
 }
