@@ -429,7 +429,7 @@ Si une erreur survient le message "Error when fetching pokemons" s'affiche ou bi
 
 /*Peut-être route à revoir, à voir*/
 
-GET localhost:8080/api/profile
+GET localhost:8080/api/profile/{username}
 
 Réponse attendue
 
@@ -438,7 +438,22 @@ Réponse attendue
 "email": "your email"
 }
 
-S'il y a une erreur (hors authentification), le message "This user profile does not exist" s'affiche
+S'il y a une erreur (hors authentification), le message "This user profile does not exist" s'affiche. Si un utilisateur essaie de modifier un profil n'étant pas le sien, le message d'erreur "Error. You do not have access to these datas or problem happen when trying to retrieve your data" s'affiche
+
+PUT localhost:8080/api/profile/{username}
+
+Pour l'instant, l'adresse email est l'unique champ modifiable. 
+
+Body à renseigner pour la requête :
+
+{
+"email": "your new email"
+}
+
+Réponse attendue :
+
+Si la requête est un succès, le message "user updated" s'affiche. Si un utilisateur essaie de modifier un profil qui n'est pas le sienne, le message d'erreur "Error.You can only update your profile" s'affiche. Sinon, s'il y a une erreur (hor authentification), le message "Error when updating this profile. Please try again" s'affiche.
+
 
 
 Pour tester que l'API fonctionne bien  :
