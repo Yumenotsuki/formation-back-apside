@@ -67,7 +67,6 @@ Réponse reçue si la requête à réussi :
 
 GET localhost:8080/api/dofus
 Récupère des données provenant de l'api Dofus, route monsters
-NB: le champs imgUrl est vide pour l'instant car je n'ai pas réussi à trouver comment importer les images qui ne sont pas des urls. Je ferai un fix quand j'aurais trouvé
 
 Réponse attendue si la requête réussie
 
@@ -176,7 +175,6 @@ Si une erreur survient, l'api renvoie le message "Error when fetching Dofus mons
 
 GET localhost:8080/api/pokemon
 Récupère des données provenant de l'api tcg pokemon, route cards
-NB: le champs imageUrl est vide pour l'instant car je n'ai pas réussi à trouver comment importer les images qui ne sont pas des urls. Je ferai un fix quand j'aurais trouvé
 
 Réponse attendue si la requête réussie
 
@@ -262,7 +260,7 @@ Si la requête est un succès, le message "user updated" s'affiche. Si un utilis
 
 GET/POST localhost:8080/auth/confirm-account
 Lors de son inscription, l'utilisateur reçoit un email avec un lien permettant l'activation de son compte. Cette requête permet d'activer le compte de l'utilisateur
-Pour que l'envoi de mail fonctionne, aller dans le fichier application.properties et ajouter un identifiant gmail pour spring.mail.username et le mot de passe de l'adresse gmail pour spring.mail.password
+Pour que l'envoi de mail fonctionne, aller dans le fichier application.properties et ajouter un identifiant gmail pour spring.mail.username et le mot de passe de l'adresse gmail pour spring.mail.password. Vous devez également autoriser la réception de mail des applications moins sécurisé dans votre application email recevant le mail envoyé.
 
 Pour tester que l'API fonctionne bien  :
 
