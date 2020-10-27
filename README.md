@@ -75,98 +75,98 @@ Réponse attendue si la requête réussie
         "id": 31,
         "name": "Larve Bleue",
         "type": "Larves",
-        "imgUrl": null,
+        "imgUrl": "lien image",
         "url": "https://www.dofus.com/fr/mmorpg/encyclopedie/monstres/31-larve-bleue"
     },
     {
         "id": 34,
         "name": "Larve Verte",
         "type": "Larves",
-        "imgUrl": null,
+        "imgUrl": "lien image"null,
         "url": "https://www.dofus.com/fr/mmorpg/encyclopedie/monstres/34-larve-verte"
     },
     {
         "id": 46,
         "name": "Larve Orange",
         "type": "Larves",
-        "imgUrl": null,
+        "imgUrl": "lien image",
         "url": "https://www.dofus.com/fr/mmorpg/encyclopedie/monstres/46-larve-orange"
     },
     {
         "id": 47,
         "name": "Abraknyde",
         "type": "Abraknydiens",
-        "imgUrl": null,
+        "imgUrl": "lien image",
         "url": "https://www.dofus.com/fr/mmorpg/encyclopedie/monstres/47-abraknyde"
     },
     {
         "id": 48,
         "name": "Tournesol Sauvage",
         "type": "Plantes des champs",
-        "imgUrl": null,
+        "imgUrl": "lien image",
         "url": "https://www.dofus.com/fr/mmorpg/encyclopedie/monstres/48-tournesol-sauvage"
     },
     {
         "id": 52,
         "name": "Arakne",
         "type": "Vermines des champs",
-        "imgUrl": null,
+        "imgUrl": "lien image",
         "url": "https://www.dofus.com/fr/mmorpg/encyclopedie/monstres/52-arakne"
     },
     {
         "id": 53,
         "name": "Bwork Mage",
         "type": "Bworks",
-        "imgUrl": null,
+        "imgUrl": "lien image",
         "url": "https://www.dofus.com/fr/mmorpg/encyclopedie/monstres/53-bwork-mage"
     },
     {
         "id": 54,
         "name": "Chafer",
         "type": "Chafers",
-        "imgUrl": null,
+        "imgUrl": "lien image",
         "url": "https://www.dofus.com/fr/mmorpg/encyclopedie/monstres/54-chafer"
     },
     {
         "id": 55,
         "name": "Gelée Bleue",
         "type": "Gelées",
-        "imgUrl": null,
+        "imgUrl": "lien image",
         "url": "https://www.dofus.com/fr/mmorpg/encyclopedie/monstres/55-gelee-bleue"
     },
     {
         "id": 56,
         "name": "Gelée Menthe",
         "type": "Gelées",
-        "imgUrl": null,
+        "imgUrl": "lien image",
         "url": "https://www.dofus.com/fr/mmorpg/encyclopedie/monstres/56-gelee-menthe"
     },
     {
         "id": 57,
         "name": "Gelée Fraise",
         "type": "Gelées",
-        "imgUrl": null,
+        "imgUrl": "lien image",
         "url": "https://www.dofus.com/fr/mmorpg/encyclopedie/monstres/57-gelee-fraise"
     },
     {
         "id": 58,
         "name": "Gelée Royale Bleue",
         "type": "Gelées",
-        "imgUrl": null,
+        "imgUrl": "lien image",
         "url": "https://www.dofus.com/fr/mmorpg/encyclopedie/monstres/58-gelee-royale-bleue"
     },
     {
         "id": 59,
         "name": "Champ Champ",
         "type": "Vermines des champs",
-        "imgUrl": null,
+        "imgUrl": "lien image",
         "url": "https://www.dofus.com/fr/mmorpg/encyclopedie/monstres/59-champ-champ"
     },
     {
         "id": 61,
         "name": "Moskito",
         "type": "Vermines des champs",
-        "imgUrl": null,
+        "imgUrl": "lien image",
         "url": "https://www.dofus.com/fr/mmorpg/encyclopedie/monstres/61-moskito"
     }
 ]
@@ -182,52 +182,52 @@ Réponse attendue si la requête réussie
     {
         "id": "xy7-10",
         "name": "Vespiquen",
-        "imageUrl": null
+        "imageUrl": "lien image"
     },
     {
         "id": "dp6-90",
         "name": "Cubone",
-        "imageUrl": null
+        "imageUrl": "lien image"
     },
     {
         "id": "pl2-103",
         "name": "Alakazam 4",
-        "imageUrl": null
+        "imageUrl": "lien image"
     },
     {
         "id": "ex8-100",
         "name": "Hariyama ex",
-        "imageUrl": null
+        "imageUrl": "lien image"
     },
     {
         "id": "xy7-4",
         "name": "Bellossom",
-        "imageUrl": null
+        "imageUrl": "lien image"
     },
     {
         "id": "ex16-1",
         "name": "Aggron",
-        "imageUrl": null
+        "imageUrl": "lien image"
     },
     {
         "id": "xy11-41",
         "name": "Joltik",
-        "imageUrl": null
+        "imageUrl": "lien image"
     },
     {
         "id": "pl2-104",
         "name": "Floatzel GL",
-        "imageUrl": null
+        "imageUrl": "lien image"
     },
     {
         "id": "dp6-107",
         "name": "Misdreavus",
-        "imageUrl": null
+        "imageUrl": "lien image"
     },
     {
         "id": "xy0-14",
         "name": "Greninja",
-        "imageUrl": null
+        "imageUrl": "lien image"
     }
 ]
 
