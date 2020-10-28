@@ -274,7 +274,7 @@ Si la requête est un succès, le message "user updated" s'affiche. Si un utilis
 
 GET/POST localhost:8080/auth/confirm-account
 Lors de son inscription, l'utilisateur reçoit un email avec un lien permettant l'activation de son compte. Cette requête permet d'activer le compte de l'utilisateur
-Pour que l'envoi de mail fonctionne, aller dans le fichier application.properties et ajouter un identifiant gmail pour spring.mail.username et le mot de passe de l'adresse gmail pour spring.mail.password. Vous devez également autoriser la réception de mail des applications moins sécurisé dans votre application email recevant le mail envoyé.
+Pour que l'envoi de mail fonctionne, aller dans le fichier application.properties et ajouter un identifiant gmail pour spring.mail.username et le mot de passe de l'adresse gmail pour spring.mail.password. Vous devez également autoriser la réception de mail des applications moins sécurisé dans votre application email recevant le mail envoyé. Pour finir, dans le dossier controllers, composant AuthController dans la requête sign up dans la partie permettant d'envoyer le mail d'activation vous devez modifier l'adresse email écrite par votre adresse email gmail précédemment ajouter dans le fichier application.properties.
 
 Pour tester que l'API fonctionne bien  :
 
