@@ -65,6 +65,20 @@ Réponse reçue si la requête à réussi :
     "message": "Login is successful."
 }
 
+POST localhost:80800/auth/updatePassword
+Requête permettant de changer son mot de passe.
+
+Body à renseigner pour la requête :
+
+{
+"password": "your password"
+}
+
+Réponse attendue :
+
+Si la requête a réussi, elle renvoie : "Your password has been successfully updated."
+Sinon, elle envoie : "An error appears during the password update process".
+
 GET localhost:8080/api/dofus
 Récupère des données provenant de l'api Dofus, route monsters
 
