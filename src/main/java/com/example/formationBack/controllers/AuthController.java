@@ -6,7 +6,9 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,6 +21,7 @@ import com.example.formationBack.models.AuthenticationRequest;
 import com.example.formationBack.models.AuthenticationResponse;
 import com.example.formationBack.models.ConfirmationToken;
 import com.example.formationBack.models.SignUpRequest;
+import com.example.formationBack.models.UpdatePassword;
 import com.example.formationBack.models.User;
 import com.example.formationBack.repositories.ConfirmationTokenRepository;
 import com.example.formationBack.repositories.UserRepository;
@@ -122,6 +125,26 @@ public class AuthController {
 		}
 		return ResponseEntity.ok("Your account has been verified");		
 		
+	}
+	
+	@RequestMapping(value = "/updatePassword", method = RequestMethod.POST)
+	public ResponseEntity<?> updatePassword(@RequestBody UpdatePassword password) throws Exception {
+		
+		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		User user = userRepository.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
+		
+		String existingPassword = passwordEncoder.encode(password.getPassword()) ; //password entered by user
+		String dbPassword = user.getPassword();  //load hashed DB password
+		
+		if(existingPassword != dbPassword) {
+			//met à jour mot de passe
+			user.setPassword(existingPassword);
+			userRepository.save(user);
+		} else {
+			throw new Exception("An error appears during the password update process");
+		}
+		
+		return ResponseEntity.ok("Your password has been successfully updated.");	
 	}
 
 }
