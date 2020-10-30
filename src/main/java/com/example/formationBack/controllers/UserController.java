@@ -42,7 +42,7 @@ public class UserController {
 		
 	}
 	
-	//modifie info du profil
+	//modifie infos du profil
 	@PutMapping("/profile/{username}")
 	public String updateProfile(@PathVariable("username") String username, Principal principal, @RequestBody Profile profile) throws Exception {
 		if(username.equals(principal.getName())) {

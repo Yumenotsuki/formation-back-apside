@@ -1,5 +1,8 @@
 package com.example.formationBack.controllers;
 
+import java.util.Map;
+import java.util.UUID;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.mail.SimpleMailMessage;
@@ -8,6 +11,7 @@ import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,14 +20,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.example.formationBack.models.AuthenticationRequest;
 import com.example.formationBack.models.AuthenticationResponse;
 import com.example.formationBack.models.ConfirmationToken;
+import com.example.formationBack.models.PasswordResetToken;
+import com.example.formationBack.models.ResetPassword;
 import com.example.formationBack.models.SignUpRequest;
 import com.example.formationBack.models.UpdatePassword;
 import com.example.formationBack.models.User;
 import com.example.formationBack.repositories.ConfirmationTokenRepository;
+import com.example.formationBack.repositories.PasswordResetTokenRepository;
 import com.example.formationBack.repositories.UserRepository;
 import com.example.formationBack.security.MyUserDetailsService;
 import com.example.formationBack.security.utils.JwtUtils;
@@ -50,6 +58,9 @@ public class AuthController {
 	
 	@Autowired
 	ConfirmationTokenRepository confirmationTokenRepository;
+	
+	@Autowired
+	PasswordResetTokenRepository resetTokenRepository;
 	
 	@Autowired
 	EmailService emailService;
@@ -109,6 +120,40 @@ public class AuthController {
 		return ResponseEntity.ok("User successfully registred");
 	}
 	
+	@RequestMapping(value = "/sendActivationMail", method = RequestMethod.POST)
+	public ResponseEntity<?> sendActivationMail(@RequestBody SignUpRequest request) throws Exception {
+		
+		try {
+			//search user in database
+			User user = userRepository.findByEmail(request.getEmail());
+			
+			//check if user is not null
+			if(user == null) {
+				throw new UsernameNotFoundException("User not found");
+			}
+			
+			if(user.isActive() == false) {
+				ConfirmationToken confirmationToken = new ConfirmationToken(user);
+				confirmationTokenRepository.save(confirmationToken);
+				
+				//envoie email pour valider le compte utilisateur qui vient d'être crée
+				SimpleMailMessage mailMessage = new SimpleMailMessage();
+				mailMessage.setTo(user.getEmail());
+				mailMessage.setSubject("Activate account");
+				mailMessage.setFrom("testdevelop.lab@gmail.com");
+				mailMessage.setText("To activate your account, please click here: "+"http://localhost:8080/auth/confirm-account?token="+confirmationToken.getConfirmationToken());
+				
+				emailService.sendEmail(mailMessage);
+			}
+			
+			
+		} catch (BadCredentialsException e) {
+			throw new Exception("An error appears during the account activation process");
+		}
+		
+		return ResponseEntity.ok("A activate account link has been sent to you.");
+	}
+	
 	@RequestMapping(value = "/confirm-account", method = {RequestMethod.GET, RequestMethod.POST})
 	public ResponseEntity<?> confirmUserAccount(@RequestParam("token") String confirmationToken) throws Exception {
 		ConfirmationToken token = confirmationTokenRepository.findByConfirmationToken(confirmationToken);
@@ -146,5 +191,65 @@ public class AuthController {
 		
 		return ResponseEntity.ok("Your password has been successfully updated.");	
 	}
+	
+	
+	
+//	@RequestMapping(value = "/sendForgotPasswordEmail", method = RequestMethod.POST)
+//	public ResponseEntity<?> sendForgotPasswordEmail(@RequestBody ResetPassword request) throws Exception {
+//		System.out.println(request.getEmail());
+//		try {
+//			//search user in database
+//			User user = userRepository.findByEmail(request.getEmail());
+//			
+//			//check if user is not null
+//			if(user == null) {
+//				throw new UsernameNotFoundException("User not found");
+//			}
+//			//create reset token
+//			PasswordResetToken reset = new PasswordResetToken(user);
+//			//save reset token in database
+//			resetTokenRepository.save(reset);
+//			
+//			//send email
+//			SimpleMailMessage passwordResetEmail = new SimpleMailMessage();
+//			passwordResetEmail.setTo(user.getEmail());
+//			passwordResetEmail.setSubject("Reset your password");
+//			passwordResetEmail.setFrom("testdevelop.lab@gmail.com");
+//			passwordResetEmail.setText("To reset your password, please click here: "+"http://localhost:8080/auth/reset?token="+ reset.getResetToken());
+//			
+//			emailService.sendEmail(passwordResetEmail);
+//			
+//		} catch (BadCredentialsException e) {
+//			throw new Exception("An error appears during the password reset process");
+//		}
+//		
+//		return ResponseEntity.ok("A password reset link has been sent to you.");
+//	}
+//	//the user can't choose his new password when clicking on the link
+//	@RequestMapping(value = "/reset", method = {RequestMethod.GET, RequestMethod.POST})
+//	public ResponseEntity<?> setNewPassword(@RequestParam("token") String resetToken, @RequestBody ResetPassword resetPassword) throws Exception {
+//		PasswordResetToken reset = resetTokenRepository.findByResetToken(resetToken);
+//		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+//		try {
+//			//check if reset token is present in db
+//			if(reset != null) {
+//				//search user by is email present in the reset token
+//				User user = userRepository.findByEmail(reset.getUser().getEmail());
+//				//set a new encode password with hello
+//				user.setPassword(passwordEncoder.encode(resetPassword.getPassword()));
+//				userRepository.save(user);
+//				//set the reset token to null so it cannot be used again
+//				reset.setResetToken(null);
+//				resetTokenRepository.save(reset);
+//			} else {
+//				throw new Exception("The link is invalid or broken!");
+//			}
+//		} catch (BadCredentialsException e) {
+//			throw new Exception("An error appears during the password reset process", e);
+//		}
+//		return ResponseEntity.ok("Your new password has been set.");		
+//	}
+	
+	
 
 }
