@@ -24,6 +24,8 @@ Pour faire fonctionner le back :
     - spring.datasource.url contient le lien vers le jdbc postgresql (le module permettant la liaison avec la base de données) et l'url où se trouve votre base de données. Remplacer "localhost:5432" par le localhost de votre base de données et "formation2" par le nom de votre base de données
     - spring.datasource.username contient votre identifiant pour vous connecter à votre base de données. Remplacer "postgres" par votre propre identifiant
     - spring.datasource.password contient votre mot de passe pour accéder à votre base de données. Remplacer les étoiles par votre propre mot de passe (quand vous push sur Git ou autre, pensez bien à l'effacer)
+    Pour les requêtes implicants l'envoi de mail de confirmation:
+    - Pour que l'envoi de mail fonctionne, aller dans le fichier application.properties et ajouter un identifiant gmail pour spring.mail.username et le mot de passe de l'adresse gmail pour spring.mail.password. Vous devez également autoriser la réception de mail des applications moins sécurisé dans votre application email recevant le mail envoyé. Pour finir, dans le dossier controllers, composant AuthController dans la requête sign up dans la partie permettant d'envoyer le mail d'activation vous devez modifier l'adresse email écrite par votre adresse email gmail précédemment ajouter dans le fichier application.properties.
     
 
 Base de données :
@@ -66,6 +68,7 @@ Réponse reçue si la requête à réussi :
 }
 
 POST localhost:80800/auth/updatePassword
+
 Requête permettant de changer son mot de passe.
 
 Body à renseigner pour la requête :
@@ -78,6 +81,32 @@ Réponse attendue :
 
 Si la requête a réussi, elle renvoie : "Your password has been successfully updated."
 Sinon, elle envoie : "An error appears during the password update process".
+
+GET/POST localhost:8080/auth/confirm-account
+
+Lors de son inscription, l'utilisateur reçoit un email avec un lien permettant l'activation de son compte. Cette requête permet d'activer le compte de l'utilisateur
+
+POST localhost:8080/auth/sendActivationMail
+
+Envoie une requête envoyant un mail contenant un lien pour activer le compte de l'utilisateur.
+
+Body à renseigner pour la requête :
+
+{
+"email": "your email"
+}
+
+Réponse attendue :
+
+Sous Postman, le message : "An activate account link has been sent to you." s'affiche et vous devez récupérer un mail contenant un lien pour activer votre compte dans votre boîte email
+
+Si erreur :
+
+Utilisateur introuvable : le message "User not found" s'affiche
+Si l'utilisateur est trouvé mais que l'envoie du mail ne marche pas, le message "An error appears during the activation process" s'affiche.
+
+
+Requêtes autres que l'authentification :
 
 GET localhost:8080/api/dofus
 Récupère des données provenant de l'api Dofus, route monsters
@@ -272,9 +301,7 @@ Réponse attendue :
 
 Si la requête est un succès, le message "user updated" s'affiche. Si un utilisateur essaie de modifier un profil qui n'est pas le sienne, le message d'erreur "Error.You can only update your profile" s'affiche. Sinon, s'il y a une erreur (hor authentification), le message "Error when updating this profile. Please try again" s'affiche.
 
-GET/POST localhost:8080/auth/confirm-account
-Lors de son inscription, l'utilisateur reçoit un email avec un lien permettant l'activation de son compte. Cette requête permet d'activer le compte de l'utilisateur
-Pour que l'envoi de mail fonctionne, aller dans le fichier application.properties et ajouter un identifiant gmail pour spring.mail.username et le mot de passe de l'adresse gmail pour spring.mail.password. Vous devez également autoriser la réception de mail des applications moins sécurisé dans votre application email recevant le mail envoyé. Pour finir, dans le dossier controllers, composant AuthController dans la requête sign up dans la partie permettant d'envoyer le mail d'activation vous devez modifier l'adresse email écrite par votre adresse email gmail précédemment ajouter dans le fichier application.properties.
+
 
 Pour tester que l'API fonctionne bien  :
 
