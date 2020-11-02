@@ -24,6 +24,8 @@ Pour faire fonctionner le back :
     - spring.datasource.url contient le lien vers le jdbc postgresql (le module permettant la liaison avec la base de données) et l'url où se trouve votre base de données. Remplacer "localhost:5432" par le localhost de votre base de données et "formation2" par le nom de votre base de données
     - spring.datasource.username contient votre identifiant pour vous connecter à votre base de données. Remplacer "postgres" par votre propre identifiant
     - spring.datasource.password contient votre mot de passe pour accéder à votre base de données. Remplacer les étoiles par votre propre mot de passe (quand vous push sur Git ou autre, pensez bien à l'effacer)
+    Pour les requêtes implicants l'envoi de mail de confirmation:
+    - Pour que l'envoi de mail fonctionne, aller dans le fichier application.properties et ajouter un identifiant gmail pour spring.mail.username et le mot de passe de l'adresse gmail pour spring.mail.password. Vous devez également autoriser la réception de mail des applications moins sécurisé dans votre application email recevant le mail envoyé. Pour finir, dans le dossier controllers, composant AuthController dans la requête sign up dans la partie permettant d'envoyer le mail d'activation vous devez modifier l'adresse email écrite par votre adresse email gmail précédemment ajouter dans le fichier application.properties.
     
 
 Base de données :
@@ -87,7 +89,6 @@ Lors de son inscription, l'utilisateur reçoit un email avec un lien permettant 
 POST localhost:8080/auth/sendActivationMail
 
 Envoie une requête envoyant un mail contenant un lien pour activer le compte de l'utilisateur.
-Pour que l'envoi de mail fonctionne, aller dans le fichier application.properties et ajouter un identifiant gmail pour spring.mail.username et le mot de passe de l'adresse gmail pour spring.mail.password. Vous devez également autoriser la réception de mail des applications moins sécurisé dans votre application email recevant le mail envoyé. Pour finir, dans le dossier controllers, composant AuthController dans la requête sign up dans la partie permettant d'envoyer le mail d'activation vous devez modifier l'adresse email écrite par votre adresse email gmail précédemment ajouter dans le fichier application.properties.
 
 Body à renseigner pour la requête :
 
