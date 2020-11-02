@@ -151,7 +151,7 @@ public class AuthController {
 			throw new Exception("An error appears during the account activation process");
 		}
 		
-		return ResponseEntity.ok("A activate account link has been sent to you.");
+		return ResponseEntity.ok("An activate account link has been sent to you.");
 	}
 	
 	@RequestMapping(value = "/confirm-account", method = {RequestMethod.GET, RequestMethod.POST})
