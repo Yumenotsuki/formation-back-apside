@@ -105,7 +105,7 @@ Utilisateur introuvable : le message "User not found" s'affiche
 Si l'utilisateur est trouvé mais que l'envoie du mail ne marche pas, le message "An error appears during the activation process" s'affiche.
 
 
-- Requêtes autres que l'authentification :
+Requêtes autres que l'authentification :
 
 GET localhost:8080/api/dofus
 Récupère des données provenant de l'api Dofus, route monsters
