@@ -216,6 +216,20 @@ Réponse attendue si la requête réussie
 
 Si une erreur survient, l'api renvoie le message "Error when fetching Dofus monsters" ou une erreur Forbidden, access denied si l'utilisateur n'est pas connecté
 
+GET localhost:8080/api/dofus/{id}
+
+Réponse attendue
+
+{
+"id": "dofus monster id id",
+"name": "dofus monster id name",
+"type": "dofus monster id type",
+"imgUrl": "dofus monster id picture url",
+"url": "dofus monster id url link"
+}
+
+Si une erreur survient lors de la requête, le message "This dofus monster does not exist", s'affiche.
+
 GET localhost:8080/api/pokemon
 Récupère des données provenant de l'api tcg pokemon, route cards
 
@@ -275,6 +289,19 @@ Réponse attendue si la requête réussie
 ]
 
 Si une erreur survient le message "Error when fetching pokemons" s'affiche ou bien une erreur forbidden, access denied si l'utilisateur n'est pas conencté à son compte.
+
+GET localhost:8080/api/pokemon/{id}
+
+Réponse attendue
+
+{
+"id": "pokemon id id",
+"name": "pokemon id name",
+"imageUrl": "pokemon id picture url"
+}
+
+Si une erreur survient lors de la requête, le message "This pokemon does not exist", s'affiche.
+
 
 GET localhost:8080/api/profile/{username}
 
