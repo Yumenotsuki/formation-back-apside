@@ -1,15 +1,20 @@
 package com.example.formationBack.controllers;
 
+import java.security.Principal;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.formationBack.models.DofusMonster;
 import com.example.formationBack.models.Pokemon;
+import com.example.formationBack.models.Profile;
+import com.example.formationBack.models.User;
 import com.example.formationBack.repositories.DofusRepository;
 import com.example.formationBack.repositories.PokemonRepository;
 
@@ -33,6 +38,17 @@ public class DataController {
 		
 	}
 	
+	@GetMapping("/dofus/{id}")
+	public Optional<DofusMonster> getDofusById(@PathVariable("id") int id) throws Exception {
+		
+			try {
+				return dofusRepository.findById(id);
+				
+			} catch (BadCredentialsException e) {
+				throw new Exception("This dofus monster does not exist", e);
+			}
+	}
+	
 	@GetMapping("/pokemon")
 	public  List<Pokemon> findAllPokemon() throws Exception {
 		try {
@@ -41,6 +57,17 @@ public class DataController {
 			throw new Exception("Error when fetching pokemons", e);
 		}
 		
+	}
+	
+	@GetMapping("/pokemon/{id}")
+	public Optional<Pokemon> getPokemonById(@PathVariable("id") String id) throws Exception {
+		
+			try {
+				return pokemonRepository.findById(id);
+				
+			} catch (BadCredentialsException e) {
+				throw new Exception("This pokemon does not exist", e);
+			}
 	}
 
 }

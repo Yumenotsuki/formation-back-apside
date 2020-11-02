@@ -17,6 +17,7 @@ public class DofusMonster {
 	private int id;
 	private String name;
 	private String type;
+	@Column(name = "imgurl")
 	private String imgUrl;
 	private String url;
 	

@@ -60,5 +60,7 @@ public class UserController {
 			
 	}
 	
+	//upload picture on user profile
+	
 
 }
