@@ -1,6 +1,5 @@
 package com.example.formationBack.controllers;
 
-import java.security.Principal;
 import java.util.List;
 import java.util.Optional;
 
@@ -13,8 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.formationBack.models.DofusMonster;
 import com.example.formationBack.models.Pokemon;
-import com.example.formationBack.models.Profile;
-import com.example.formationBack.models.User;
 import com.example.formationBack.repositories.DofusRepository;
 import com.example.formationBack.repositories.PokemonRepository;
 
