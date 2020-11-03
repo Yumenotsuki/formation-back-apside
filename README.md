@@ -82,7 +82,7 @@ Réponse attendue :
 Si la requête a réussi, elle renvoie : "Your password has been successfully updated."
 Sinon, elle envoie : "An error appears during the password update process".
 
-<b>GET/POST localhost:8080/auth/confirm-account (uniquement utile au back)</b>
+<b>GET/POST localhost:8080/auth/confirm-account</b>
 
 Lors de son inscription, l'utilisateur reçoit un email avec un lien permettant l'activation de son compte. Cette requête permet d'activer le compte de l'utilisateur
 
