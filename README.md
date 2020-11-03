@@ -290,7 +290,7 @@ Réponse attendue si la requête réussie
 
 Si une erreur survient le message "Error when fetching pokemons" s'affiche ou bien une erreur forbidden, access denied si l'utilisateur n'est pas conencté à son compte.
 
-<b>GET localhost:8080/api/pokemon/{id}<b>
+<b>GET localhost:8080/api/pokemon/{id}</b>
 
 Réponse attendue
 
