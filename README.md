@@ -36,7 +36,7 @@ Authentification :
 
 - Pour inscrire un nouvel utilisateur :
 
-POST localhost:8080/auth/signup
+<b>POST localhost:8080/auth/signup</b>
 
 Body à renseigner pour créer un utilisateur
 
@@ -51,7 +51,7 @@ Réponse reçue si la création est un succès :
 
 - Pour se connecter à son compte :
 
-POST localhost:8080/auth/signin
+<b>POST localhost:8080/auth/signin</b>
 
 Body à renseigner pour se connecter :
 
@@ -67,7 +67,7 @@ Réponse reçue si la requête à réussi :
     "message": "Login is successful."
 }
 
-POST localhost:80800/auth/updatePassword
+<b>POST localhost:80800/auth/updatePassword</b>
 
 Requête permettant de changer son mot de passe.
 
@@ -82,11 +82,11 @@ Réponse attendue :
 Si la requête a réussi, elle renvoie : "Your password has been successfully updated."
 Sinon, elle envoie : "An error appears during the password update process".
 
-GET/POST localhost:8080/auth/confirm-account
+<b>GET/POST localhost:8080/auth/confirm-account (uniquement utile au back)</b>
 
 Lors de son inscription, l'utilisateur reçoit un email avec un lien permettant l'activation de son compte. Cette requête permet d'activer le compte de l'utilisateur
 
-POST localhost:8080/auth/sendActivationMail
+<b>POST localhost:8080/auth/sendActivationMail</b>
 
 Envoie une requête envoyant un mail contenant un lien pour activer le compte de l'utilisateur.
 
@@ -108,7 +108,7 @@ Si l'utilisateur est trouvé mais que l'envoie du mail ne marche pas, le message
 
 Requêtes autres que l'authentification :
 
-GET localhost:8080/api/dofus
+<b>GET localhost:8080/api/dofus</b>
 Récupère des données provenant de l'api Dofus, route monsters
 
 Réponse attendue si la requête réussie
@@ -216,7 +216,7 @@ Réponse attendue si la requête réussie
 
 Si une erreur survient, l'api renvoie le message "Error when fetching Dofus monsters" ou une erreur Forbidden, access denied si l'utilisateur n'est pas connecté
 
-GET localhost:8080/api/dofus/{id}
+<b>GET localhost:8080/api/dofus/{id}</b>
 
 Réponse attendue
 
@@ -230,7 +230,7 @@ Réponse attendue
 
 Si une erreur survient lors de la requête, le message "This dofus monster does not exist", s'affiche.
 
-GET localhost:8080/api/pokemon
+<b>GET localhost:8080/api/pokemon</b>
 Récupère des données provenant de l'api tcg pokemon, route cards
 
 Réponse attendue si la requête réussie
@@ -290,7 +290,7 @@ Réponse attendue si la requête réussie
 
 Si une erreur survient le message "Error when fetching pokemons" s'affiche ou bien une erreur forbidden, access denied si l'utilisateur n'est pas conencté à son compte.
 
-GET localhost:8080/api/pokemon/{id}
+<b>GET localhost:8080/api/pokemon/{id}<b>
 
 Réponse attendue
 
@@ -303,7 +303,7 @@ Réponse attendue
 Si une erreur survient lors de la requête, le message "This pokemon does not exist", s'affiche.
 
 
-GET localhost:8080/api/profile/{username}
+<b>GET localhost:8080/api/profile/{username}</b>
 
 Réponse attendue
 
@@ -314,7 +314,7 @@ Réponse attendue
 
 S'il y a une erreur (hors authentification), le message "This user profile does not exist" s'affiche. Si un utilisateur essaie de modifier un profil n'étant pas le sien, le message d'erreur "Error. You do not have access to these datas or problem happen when trying to retrieve your data" s'affiche
 
-PUT localhost:8080/api/profile/{username}
+<b>PUT localhost:8080/api/profile/{username}</b>
 
 Pour l'instant, l'adresse email est l'unique champ modifiable. 
 
@@ -332,13 +332,13 @@ Si la requête est un succès, le message "user updated" s'affiche. Si un utilis
 
 Pour tester que l'API fonctionne bien  :
 
-- GET localhost:8080/test/home
+<b>GET localhost:8080/test/home</b>
 route accessible à tous 
 
 Réponse attendue:
 Welcome
 
-- GET localhost:8080/test/user
+<b>GET localhost:8080/test/user</b>
 route uniquement accessible aux utilisateurs connecter => Faire requête signin avant d'accéder à cette route
 
 Réponse attendue :
