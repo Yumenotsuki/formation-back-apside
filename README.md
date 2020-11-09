@@ -105,6 +105,40 @@ Si erreur :
 Utilisateur introuvable : le message "User not found" s'affiche
 Si l'utilisateur est trouvé mais que l'envoie du mail ne marche pas, le message "An error appears during the activation process" s'affiche.
 
+<b>POST localhost:8080/auth/sendForgotPasswordEmail</b>
+
+Requête créant un token pour reconfigurer son mot de passe et envoyant un email contenant un lien vers la page pour reconfigurer celui-ci
+NB: Penser à indiquer la route du formulaire pour reconfigurer son mot de passe dans le front.
+
+Body à renseigner pour la requête :
+
+{
+"email": "your email"
+}
+
+Réponse attendue :
+
+Sous Postman, le message : "A password reset link has been sent to you." s'affiche et vous devez récupérer un mail contenant un lien pour reconfigurer votre mot de passe dans votre boîte email
+
+Si erreur :
+
+Utilisateur introuvable : le message "User not found" s'affiche
+Si l'utilisateur est trouvé mais que l'envoie du mail ne marche pas, le message "An error appears during the password reset process" s'affiche.
+
+<b>POST localhost:8080/auth/resetPassword</b>
+
+Requête permettant de reconfigurer le mot de passe de son compte. Efface également le token pour faire la reconfiguration du mot de passe.
+
+Body à renseigner pour la requête :
+
+{
+"password": "your password"
+}
+
+Réponse attendue :
+
+Si la requête a réussi, elle renvoie : "Your password has been successfully reset."
+Sinon, elle envoie : "An error appears during the password reset process".
 
 Requêtes autres que l'authentification :
 
