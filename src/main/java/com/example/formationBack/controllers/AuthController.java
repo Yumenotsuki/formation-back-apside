@@ -187,6 +187,7 @@ public class AuthController {
 			//met à jour mot de passe
 			user.setPassword(existingPassword);
 			userRepository.save(user);
+			
 		} else {
 			throw new Exception("An error appears during the password update process");
 		}
@@ -194,64 +195,60 @@ public class AuthController {
 		return ResponseEntity.ok("Your password has been successfully updated.");	
 	}
 	
+	@RequestMapping(value = "/sendForgotPasswordEmail", method = RequestMethod.POST)
+	public ResponseEntity<?> sendForgotPasswordEmail(@RequestBody ResetPassword request) throws Exception {
+		System.out.println(request.getEmail());
+		try {
+			//search user in database
+			User user = userRepository.findByEmail(request.getEmail());
+			
+			//check if user is not null
+			if(user == null) {
+				throw new UsernameNotFoundException("User not found");
+			}
+			//create reset token
+			PasswordResetToken reset = new PasswordResetToken(user);
+			//save reset token in database
+			resetTokenRepository.save(reset);
+			
+			//send email
+			SimpleMailMessage passwordResetEmail = new SimpleMailMessage();
+			passwordResetEmail.setTo(user.getEmail());
+			passwordResetEmail.setSubject("Reset your password");
+			passwordResetEmail.setFrom("testdevelop.lab@gmail.com");
+			passwordResetEmail.setText("To reset your password, please click here: "+"http://localhost:4200/reset-password-form?token="+ reset.getResetToken());
+			
+			emailService.sendEmail(passwordResetEmail);
+			
+		} catch (BadCredentialsException e) {
+			throw new Exception("An error appears during the password reset process");
+		}
+		return ResponseEntity.ok("A password reset link has been sent to you.");
+	}
 	
+	@RequestMapping(value = "/resetPassword", method = RequestMethod.POST)
+	public ResponseEntity<?> resetPassword(@RequestBody UpdatePassword password) throws Exception {
+		
+		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		User user = userRepository.findByUsername(SecurityContextHolder.getContext().getAuthentication().getName());
+		
+		String existingPassword = passwordEncoder.encode(password.getPassword()) ; //password entered by user
+		String dbPassword = user.getPassword();  //load hashed DB password
+		
+		PasswordResetToken reset = resetTokenRepository.findByUserId(user.getId());
+		if(!reset.getResetToken().isEmpty()) {
+			if(existingPassword != dbPassword) {
+				//met à jour mot de passe
+				user.setPassword(existingPassword);
+				userRepository.save(user);
+			}
+			resetTokenRepository.delete(reset);
+		}
+		 else {
+			throw new Exception("An error appears during the password reset process");
+		}
+		
+		return ResponseEntity.ok("Your password has been successfully reset.");	
+	}
 	
-//	@RequestMapping(value = "/sendForgotPasswordEmail", method = RequestMethod.POST)
-//	public ResponseEntity<?> sendForgotPasswordEmail(@RequestBody ResetPassword request) throws Exception {
-//		System.out.println(request.getEmail());
-//		try {
-//			//search user in database
-//			User user = userRepository.findByEmail(request.getEmail());
-//			
-//			//check if user is not null
-//			if(user == null) {
-//				throw new UsernameNotFoundException("User not found");
-//			}
-//			//create reset token
-//			PasswordResetToken reset = new PasswordResetToken(user);
-//			//save reset token in database
-//			resetTokenRepository.save(reset);
-//			
-//			//send email
-//			SimpleMailMessage passwordResetEmail = new SimpleMailMessage();
-//			passwordResetEmail.setTo(user.getEmail());
-//			passwordResetEmail.setSubject("Reset your password");
-//			passwordResetEmail.setFrom("testdevelop.lab@gmail.com");
-//			passwordResetEmail.setText("To reset your password, please click here: "+"http://localhost:8080/auth/reset?token="+ reset.getResetToken());
-//			
-//			emailService.sendEmail(passwordResetEmail);
-//			
-//		} catch (BadCredentialsException e) {
-//			throw new Exception("An error appears during the password reset process");
-//		}
-//		
-//		return ResponseEntity.ok("A password reset link has been sent to you.");
-//	}
-//	//the user can't choose his new password when clicking on the link
-//	@RequestMapping(value = "/reset", method = {RequestMethod.GET, RequestMethod.POST})
-//	public ResponseEntity<?> setNewPassword(@RequestParam("token") String resetToken, @RequestBody ResetPassword resetPassword) throws Exception {
-//		PasswordResetToken reset = resetTokenRepository.findByResetToken(resetToken);
-//		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-//		try {
-//			//check if reset token is present in db
-//			if(reset != null) {
-//				//search user by is email present in the reset token
-//				User user = userRepository.findByEmail(reset.getUser().getEmail());
-//				//set a new encode password with hello
-//				user.setPassword(passwordEncoder.encode(resetPassword.getPassword()));
-//				userRepository.save(user);
-//				//set the reset token to null so it cannot be used again
-//				reset.setResetToken(null);
-//				resetTokenRepository.save(reset);
-//			} else {
-//				throw new Exception("The link is invalid or broken!");
-//			}
-//		} catch (BadCredentialsException e) {
-//			throw new Exception("An error appears during the password reset process", e);
-//		}
-//		return ResponseEntity.ok("Your new password has been set.");		
-//	}
-	
-	
-
 }
