@@ -250,6 +250,23 @@ Réponse attendue si la requête réussie
 
 Si une erreur survient, l'api renvoie le message "Error when fetching Dofus monsters" ou une erreur Forbidden, access denied si l'utilisateur n'est pas connecté
 
+<b>POST localhost:8080/api/dofus</b>
+Requête permettant de créer un monstre dofus
+
+Body à envoyer :
+
+{
+"name": "new dofus monster name",
+"type": "new dofus monster type",
+"imgUrl": "new dofus monster picture url",
+"url": "new dofus monster url link"
+}
+
+Réponse attendue : 
+
+Si la requête réussit le message "Dofus monster successfully created!" apparaît. Si erreur, le message "Error when creating new dofus monster" s'affiche.
+
+
 <b>GET localhost:8080/api/dofus/{id}</b>
 
 Réponse attendue
@@ -323,6 +340,21 @@ Réponse attendue si la requête réussie
 ]
 
 Si une erreur survient le message "Error when fetching pokemons" s'affiche ou bien une erreur forbidden, access denied si l'utilisateur n'est pas conencté à son compte.
+
+<b>POST localhost:8080/api/pokemon</b>
+Requête permettant de créer un pokemon
+
+Body à envoyer :
+
+{
+"name": "new pokemon name",
+"imageUrl": "new pokemon picture url"
+}
+
+Réponse attendue : 
+
+Si la requête réussit le message "Pokemon is successfully created!" apparaît. Si erreur, le message "Error when creating new pokemon" s'affiche.
+
 
 <b>GET localhost:8080/api/pokemon/{id}</b>
 
